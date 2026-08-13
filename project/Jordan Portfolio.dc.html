@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth;background:#070A13;}
+  body{margin:0;background:#070A13;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  *{box-sizing:border-box;}
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+  a{color:#22D3EE;text-decoration:none;}
+  a:hover{color:#8B5CF6;}
+  select option{background:#0D1221;color:#FFFFFF;}
+</style>
+</helmet>
+
+<div id="jordan-portfolio-root" style="background:#070A13;color:#FFFFFF;font-family:'Inter',sans-serif;overflow-x:hidden;">
+
+  <!-- NAV -->
+  <header style="position:sticky;top:0;z-index:100;background:rgba(7,10,19,0.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,60px);">
+    <div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:22px;letter-spacing:0.02em;">JORDAN</div>
+      <div style="font-size:11px;color:#A7B0C0;letter-spacing:0.08em;text-transform:uppercase;margin-top:2px;">Creator Growth Specialist</div>
+    </div>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="background:none;border:1px solid rgba(255,255,255,0.15);border-radius:10px;width:44px;height:44px;color:#FFFFFF;font-size:20px;cursor:pointer;">☰</button>
+    </sc-if>
+    <sc-if value="{{ isNotMobile }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:40px;">
+        <a href="#home" style="color:#FFFFFF;font-size:14px;font-weight:500;">HOME</a>
+        <a href="#services" style="color:#FFFFFF;font-size:14px;font-weight:500;">SERVICES</a>
+        <a href="#work" style="color:#FFFFFF;font-size:14px;font-weight:500;">WORK</a>
+        <a href="#about" style="color:#FFFFFF;font-size:14px;font-weight:500;">ABOUT</a>
+        <a href="#contact" style="color:#FFFFFF;font-size:14px;font-weight:500;">CONTACT</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ isNotMobile }}" hint-placeholder-val="{{ true }}">
+      <a href="#contact" style="background:linear-gradient(90deg,#8B5CF6,#22D3EE);color:#070A13;font-weight:700;font-size:13px;letter-spacing:0.03em;padding:12px 22px;border-radius:10px;">START A PROJECT →</a>
+    </sc-if>
+  </header>
+
+  <!-- MOBILE FULLSCREEN MENU -->
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;background:#070A13;z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;">
+      <button onClick="{{ closeMenu }}" style="position:absolute;top:20px;right:24px;background:none;border:1px solid rgba(255,255,255,0.15);border-radius:10px;width:44px;height:44px;color:#FFFFFF;font-size:20px;cursor:pointer;">✕</button>
+      <a href="#home" onClick="{{ closeMenu }}" style="color:#FFFFFF;font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;">Home</a>
+      <a href="#services" onClick="{{ closeMenu }}" style="color:#FFFFFF;font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;">Services</a>
+      <a href="#work" onClick="{{ closeMenu }}" style="color:#FFFFFF;font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;">Case Studies</a>
+      <a href="#about" onClick="{{ closeMenu }}" style="color:#FFFFFF;font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;">About</a>
+      <a href="#contact" onClick="{{ closeMenu }}" style="color:#FFFFFF;font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;">Contact</a>
+      <a href="#contact" onClick="{{ closeMenu }}" style="margin-top:16px;background:linear-gradient(90deg,#8B5CF6,#22D3EE);color:#070A13;font-weight:700;font-size:14px;padding:14px 28px;border-radius:10px;">START A PROJECT →</a>
+    </div>
+  </sc-if>
+
+  <!-- HERO -->
+  <section id="home" style="position:relative;padding:clamp(60px,8vw,110px) clamp(20px,6vw,80px) clamp(80px,8vw,120px);background:radial-gradient(ellipse 60% 50% at 20% 0%, rgba(139,92,246,0.16), transparent 60%),radial-gradient(ellipse 50% 40% at 90% 20%, rgba(34,211,238,0.10), transparent 60%),#070A13;">
+    <div style="display:flex;flex-wrap:wrap;gap:60px;align-items:center;max-width:1360px;margin:0 auto;">
+      <div style="flex:1 1 460px;min-width:320px;animation:fadeInUp 0.7s ease both;">
+        <div style="font-size:12px;letter-spacing:0.12em;color:#22D3EE;font-weight:600;margin-bottom:20px;">CREATOR GROWTH • MARKETING • CONTENT</div>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:clamp(42px,6vw,76px);line-height:1.03;margin:0 0 24px;letter-spacing:-0.01em;">
+          GROW YOUR<br>CHANNEL. <span style="background:linear-gradient(90deg,#8B5CF6,#22D3EE);-webkit-background-clip:text;background-clip:text;color:transparent;">BUILD YOUR AUDIENCE.</span><br>BECOME DISCOVERABLE.
+        </h1>
+        <p style="font-size:18px;line-height:1.6;color:#A7B0C0;max-width:520px;margin:0 0 32px;">I help creators turn their content into stronger, more discoverable brands through strategic channel marketing, SEO, content optimization, clip editing and cross-platform growth.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:16px;margin-bottom:28px;">
+          <a href="#contact" style="background:linear-gradient(90deg,#8B5CF6,#22D3EE);color:#070A13;font-weight:700;font-size:15px;padding:16px 28px;border-radius:12px;box-shadow:0 0 30px rgba(139,92,246,0.35);">START A PROJECT →</a>
+          <a href="#work" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#FFFFFF;font-weight:600;font-size:15px;padding:16px 28px;border-radius:12px;">EXPLORE MY WORK</a>
+        </div>
+        <div style="font-size:13px;color:#A7B0C0;letter-spacing:0.02em;">YouTube • Twitch • Kick • TikTok • Instagram • Social Media</div>
+      </div>
+      <div style="flex:1 1 420px;min-width:300px;position:relative;display:flex;justify-content:center;animation:fadeInUp 0.9s ease both;">
+        <div style="position:relative;width:100%;max-width:440px;aspect-ratio:4/5;border-radius:24px;border:1px solid rgba(255,255,255,0.08);background:repeating-linear-gradient(135deg,#0D1221,#0D1221 12px,#10162a 12px,#10162a 24px);box-shadow:0 0 60px rgba(139,92,246,0.25), inset 0 0 0 1px rgba(34,211,238,0.15);display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;color:#A7B0C0;font-family:monospace;font-size:13px;letter-spacing:0.05em;">
+            <div style="color:#FFFFFF;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;margin-bottom:8px;">[JORDAN PROFESSIONAL IMAGE]</div>
+            IMAGE PLACEHOLDER
+          </div>
+        </div>
+        <div style="position:absolute;top:6%;left:-6%;background:#0D1221;border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:14px 18px;box-shadow:0 8px 30px rgba(0,0,0,0.4);">
+          <div style="font-size:10px;color:#A7B0C0;letter-spacing:0.06em;margin-bottom:4px;">CHANNEL REACH</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:#22D3EE;font-size:18px;">↗ 42%</div>
+        </div>
+        <div style="position:absolute;top:38%;right:-10%;background:#0D1221;border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:14px 18px;box-shadow:0 8px 30px rgba(0,0,0,0.4);">
+          <div style="font-size:10px;color:#A7B0C0;letter-spacing:0.06em;margin-bottom:4px;">VIEWERS</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:#8B5CF6;font-size:18px;">+18.6%</div>
+        </div>
+        <div style="position:absolute;bottom:4%;left:-4%;background:#0D1221;border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:14px 18px;box-shadow:0 8px 30px rgba(0,0,0,0.4);">
+          <div style="font-size:10px;color:#A7B0C0;letter-spacing:0.06em;margin-bottom:4px;">CONTENT DISCOVERABILITY</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:#22D3EE;font-size:18px;">↑</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section style="background:#0D1221;padding:44px clamp(20px,6vw,80px);border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);">
+    <div style="max-width:1200px;margin:0 auto;text-align:center;">
+      <div style="font-size:13px;letter-spacing:0.08em;color:#A7B0C0;margin-bottom:24px;">HELPING CREATORS GROW ACROSS THE PLATFORMS THAT MATTER</div>
+      <div style="display:flex;flex-wrap:wrap;gap:36px;justify-content:center;">
+        <sc-for list="{{ platforms }}" as="p" hint-placeholder-count="7">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:#A7B0C0;opacity:0.8;">{{ p }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section style="background:#070A13;padding:clamp(64px,9vw,120px) clamp(20px,6vw,80px);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;max-width:720px;margin:0 auto 56px;text-align:center;">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:clamp(32px,4.5vw,48px);line-height:1.1;margin:0 0 18px;">GREAT CONTENT DESERVES TO BE DISCOVERED.</h2>
+        <p style="color:#A7B0C0;font-size:17px;line-height:1.6;margin:0;">Creating great content is only part of the journey. Without the right strategy, optimization and promotion, even strong content can remain invisible.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
+        <sc-for list="{{ problemCards }}" as="c" hint-placeholder-count="3">
+          <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;background:#0D1221;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px;">
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;margin:0 0 12px;color:#FFFFFF;">{{ c.title }}</h3>
+            <p style="color:#A7B0C0;font-size:15px;line-height:1.6;margin:0;">{{ c.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" style="background:#0D1221;padding:clamp(64px,9vw,120px) clamp(20px,6vw,80px);">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;max-width:640px;margin:0 auto 56px;text-align:center;">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:clamp(32px,4.5vw,48px);margin:0 0 16px;">WHAT I DO</h2>
+        <p style="color:#A7B0C0;font-size:17px;line-height:1.6;margin:0;">Practical growth solutions built around your content, platform and audience.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+          <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease,border-color .3s ease,transform .3s ease;background:#070A13;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px;" style-hover="border-color:rgba(139,92,246,0.5);transform:translateY(-4px);">
+            <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(139,92,246,0.18),rgba(34,211,238,0.12));display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:18px;">{{ s.icon }}</div>
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;margin:0 0 10px;">{{ s.title }}</h3>
+            <p style="color:#A7B0C0;font-size:14.5px;line-height:1.6;margin:0 0 18px;">{{ s.desc }}</p>
+            <div style="font-size:12px;color:#22D3EE;letter-spacing:0.03em;margin-bottom:16px;">{{ s.tags }}</div>
+            <a href="#contact" style="font-size:13px;font-weight:600;color:#FFFFFF;">LEARN MORE →</a>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM FLOW -->
+  <section style="background:#070A13;padding:clamp(64px,9vw,120px) clamp(20px,6vw,80px);">
+    <div style="max-width:1000px;margin:0 auto;text-align:center;">
+      <h2 data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:clamp(30px,4.2vw,44px);margin:0 0 16px;">YOUR STREAM CAN BECOME MORE THAN A STREAM.</h2>
+      <p data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;color:#A7B0C0;font-size:17px;line-height:1.6;max-width:640px;margin:0 auto 56px;">I look at your content as an ecosystem, not a single upload. One piece of content can create multiple opportunities for discovery and audience growth.</p>
+
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;display:flex;flex-direction:column;align-items:center;gap:14px;">
+        <div style="background:linear-gradient(90deg,#8B5CF6,#22D3EE);color:#070A13;font-weight:700;font-size:14px;padding:14px 26px;border-radius:12px;">TWITCH STREAM</div>
+        <div style="color:#A7B0C0;">↓</div>
+        <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;">
+          <div style="background:#0D1221;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 20px;font-size:13px;font-weight:600;">VOD</div>
+          <div style="background:#0D1221;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 20px;font-size:13px;font-weight:600;">CLIPS</div>
+          <div style="background:#0D1221;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 20px;font-size:13px;font-weight:600;">HIGHLIGHTS</div>
+        </div>
+        <div style="color:#A7B0C0;">↓</div>
+        <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;">
+          <div style="background:#0D1221;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 20px;font-size:13px;font-weight:600;color:#22D3EE;">YouTube</div>
+          <div style="background:#0D1221;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 20px;font-size:13px;font-weight:600;color:#22D3EE;">TikTok</div>
+          <div style="background:#0D1221;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 20px;font-size:13px;font-weight:600;color:#22D3EE;">Instagram</div>
+        </div>
+        <div style="color:#A7B0C0;">↓</div>
+        <div style="background:#0D1221;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 20px;font-size:13px;font-weight:600;">SHORTS / REELS</div>
+        <div style="color:#A7B0C0;">↓</div>
+        <div style="background:#0D1221;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 20px;font-size:13px;font-weight:600;">NEW AUDIENCE</div>
+        <div style="color:#A7B0C0;">↓</div>
+        <div style="background:linear-gradient(90deg,rgba(139,92,246,0.2),rgba(34,211,238,0.2));border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 26px;font-size:14px;font-weight:700;">YOUR COMMUNITY</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section style="background:#0D1221;padding:clamp(64px,9vw,120px) clamp(20px,6vw,80px);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <h2 data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:clamp(32px,4.5vw,48px);text-align:center;margin:0 0 56px;">HOW I WORK</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;">
+        <sc-for list="{{ processSteps }}" as="step" hint-placeholder-count="6">
+          <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;background:#070A13;border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:26px;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:13px;color:#8B5CF6;margin-bottom:10px;">{{ step.n }}</div>
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;margin:0 0 8px;">{{ step.title }}</h3>
+            <p style="color:#A7B0C0;font-size:14px;line-height:1.55;margin:0;">{{ step.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK / CASE STUDIES -->
+  <section id="work" style="background:#070A13;padding:clamp(64px,9vw,120px) clamp(20px,6vw,80px);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;max-width:640px;margin:0 auto 56px;text-align:center;">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:clamp(32px,4.5vw,48px);margin:0 0 16px;">SELECTED WORK</h2>
+        <p style="color:#A7B0C0;font-size:17px;line-height:1.6;margin:0;">A look at campaigns, creator projects and content work I've worked on.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:28px;">
+        <sc-for list="{{ caseStudies }}" as="cs" hint-placeholder-count="3">
+          <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;background:#0D1221;border:1px solid rgba(255,255,255,0.08);border-radius:22px;padding:32px;display:flex;flex-wrap:wrap;gap:32px;">
+            <div style="flex:1 1 320px;min-width:260px;aspect-ratio:16/10;border-radius:16px;border:1px solid rgba(255,255,255,0.08);background:repeating-linear-gradient(135deg,#070A13,#070A13 12px,#10162a 12px,#10162a 24px);display:flex;align-items:center;justify-content:center;">
+              <div style="text-align:center;color:#A7B0C0;font-family:monospace;font-size:12px;">[{{ cs.imageLabel }}]<br>IMAGE PLACEHOLDER</div>
+            </div>
+            <div style="flex:1 1 360px;min-width:280px;">
+              <div style="font-size:12px;color:#22D3EE;letter-spacing:0.04em;margin-bottom:10px;">{{ cs.tags }}</div>
+              <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;margin:0 0 16px;">{{ cs.title }}</h3>
+              <div style="display:grid;gap:10px;margin-bottom:18px;">
+                <p style="margin:0;color:#A7B0C0;font-size:14px;line-height:1.55;"><b style="color:#FFFFFF;">Challenge — </b>{{ cs.challenge }}</p>
+                <p style="margin:0;color:#A7B0C0;font-size:14px;line-height:1.55;"><b style="color:#FFFFFF;">Approach — </b>{{ cs.approach }}</p>
+                <p style="margin:0;color:#A7B0C0;font-size:14px;line-height:1.55;"><b style="color:#FFFFFF;">Result — </b>{{ cs.result }}</p>
+              </div>
+              <a href="#contact" style="font-size:13px;font-weight:700;color:#FFFFFF;">VIEW CASE STUDY →</a>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section style="background:#0D1221;padding:clamp(64px,9vw,120px) clamp(20px,6vw,80px);">
+    <div style="max-width:1000px;margin:0 auto;text-align:center;">
+      <h2 data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:clamp(32px,4.5vw,48px);margin:0 0 56px;">GROWTH SHOULD BE MEASURABLE.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
+        <sc-for list="{{ metrics }}" as="m" hint-placeholder-count="4">
+          <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;background:#070A13;border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:32px 20px;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:40px;background:linear-gradient(90deg,#8B5CF6,#22D3EE);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px;">{{ m.value }}</div>
+            <div style="font-size:12px;letter-spacing:0.06em;color:#A7B0C0;">{{ m.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section style="background:#070A13;padding:clamp(64px,9vw,120px) clamp(20px,6vw,80px);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <h2 data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:clamp(32px,4.5vw,48px);text-align:center;margin:0 0 56px;">WHAT CREATORS SAY</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
+        <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="3">
+          <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;background:#0D1221;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px;">
+            <div style="font-size:32px;color:#8B5CF6;line-height:1;margin-bottom:12px;">"</div>
+            <p style="color:#A7B0C0;font-size:15px;line-height:1.6;margin:0 0 18px;">{{ t.quote }}</p>
+            <div style="color:#22D3EE;font-size:14px;letter-spacing:0.1em;margin-bottom:16px;">★★★★★</div>
+            <div style="font-weight:700;font-size:14px;">{{ t.name }}</div>
+            <div style="color:#A7B0C0;font-size:13px;">{{ t.role }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="background:#0D1221;padding:clamp(64px,9vw,120px) clamp(20px,6vw,80px);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:center;margin-bottom:80px;">
+        <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;flex:1 1 360px;min-width:280px;aspect-ratio:4/5;border-radius:22px;border:1px solid rgba(255,255,255,0.08);background:repeating-linear-gradient(135deg,#070A13,#070A13 12px,#10162a 12px,#10162a 24px);box-shadow:0 0 50px rgba(139,92,246,0.18);display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;color:#A7B0C0;font-family:monospace;font-size:13px;">[JORDAN PROFESSIONAL IMAGE]<br>IMAGE PLACEHOLDER</div>
+        </div>
+        <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;flex:1 1 420px;min-width:280px;">
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:clamp(32px,4.5vw,48px);margin:0 0 20px;">MEET JORDAN.</h2>
+          <p style="color:#A7B0C0;font-size:17px;line-height:1.65;margin:0 0 20px;">I'm Abioye Ibrahim, professionally known as Jordan — a creator growth and digital promotion specialist focused on helping creators build stronger online audiences.</p>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;margin:0 0 10px;color:#22D3EE;">MY APPROACH</h3>
+          <p style="color:#A7B0C0;font-size:15px;line-height:1.65;margin:0;">I believe creator growth is bigger than simply chasing views or followers. The goal is to create a system where content is discoverable, audiences are engaged and every platform contributes to the bigger creator brand.</p>
+        </div>
+      </div>
+
+      <h3 data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;text-align:center;margin:0 0 24px;">MY SPECIALTIES</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:80px;">
+        <sc-for list="{{ specialties }}" as="sp" hint-placeholder-count="4">
+          <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;background:#070A13;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;">{{ sp }}</div>
+        </sc-for>
+      </div>
+
+      <h3 data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;text-align:center;margin:0 0 24px;">MY VALUES</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;">
+        <sc-for list="{{ values }}" as="v" hint-placeholder-count="4">
+          <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;background:#070A13;border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:26px;">
+            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;margin:0 0 8px;color:#8B5CF6;">{{ v.title }}</h4>
+            <p style="color:#A7B0C0;font-size:14px;line-height:1.55;margin:0;">{{ v.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="position:relative;background:radial-gradient(ellipse 70% 60% at 50% 40%, rgba(139,92,246,0.22), transparent 65%),#070A13;padding:clamp(80px,10vw,140px) clamp(20px,6vw,80px);text-align:center;">
+    <div style="max-width:720px;margin:0 auto;">
+      <h2 data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:clamp(34px,5vw,54px);line-height:1.08;margin:0 0 20px;">READY TO TAKE YOUR CHANNEL FURTHER?</h2>
+      <p data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;color:#A7B0C0;font-size:17px;line-height:1.6;margin:0 0 36px;">Tell me where your channel is today and where you want to take it.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;">
+        <a href="#contact" style="background:linear-gradient(90deg,#8B5CF6,#22D3EE);color:#070A13;font-weight:700;font-size:15px;padding:16px 30px;border-radius:12px;box-shadow:0 0 30px rgba(139,92,246,0.35);">START YOUR PROJECT →</a>
+        <a href="#services" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#FFFFFF;font-weight:600;font-size:15px;padding:16px 30px;border-radius:12px;">VIEW SERVICES</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="background:#0D1221;padding:clamp(64px,9vw,120px) clamp(20px,6vw,80px);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="display:flex;flex-wrap:wrap;gap:56px;">
+        <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;flex:1 1 320px;min-width:280px;">
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:clamp(32px,4.5vw,48px);margin:0 0 16px;">LET'S TALK ABOUT YOUR CHANNEL.</h2>
+          <p style="color:#A7B0C0;font-size:16px;line-height:1.6;margin:0 0 32px;">Tell me about your content, your current challenges and where you want to go.</p>
+          <div style="aspect-ratio:4/5;max-width:400px;border-radius:20px;border:1px solid rgba(255,255,255,0.08);background:repeating-linear-gradient(135deg,#070A13,#070A13 12px,#10162a 12px,#10162a 24px);display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center;color:#A7B0C0;font-family:monospace;font-size:13px;">[JORDAN PROFESSIONAL IMAGE]<br>IMAGE PLACEHOLDER</div>
+          </div>
+        </div>
+        <form onSubmit="{{ handleSubmit }}" data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;flex:1 1 420px;min-width:280px;display:grid;gap:16px;background:#070A13;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px;">
+          <input name="name" required="{{ true }}" placeholder="Name" style="background:#0D1221;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;color:#FFFFFF;font-size:14px;font-family:inherit;" />
+          <input name="email" type="email" required="{{ true }}" placeholder="Email" style="background:#0D1221;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;color:#FFFFFF;font-size:14px;font-family:inherit;" />
+          <input name="channel" placeholder="Channel / Creator Name" style="background:#0D1221;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;color:#FFFFFF;font-size:14px;font-family:inherit;" />
+          <select name="platform" style="background:#0D1221;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;color:#FFFFFF;font-size:14px;font-family:inherit;">
+            <option value="">Main Platform</option>
+            <option>YouTube</option><option>Twitch</option><option>Kick</option><option>TikTok</option><option>Instagram</option><option>Multiple Platforms</option>
+          </select>
+          <select name="help" style="background:#0D1221;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;color:#FFFFFF;font-size:14px;font-family:inherit;">
+            <option value="">What do you need help with?</option>
+            <option>Channel Marketing</option><option>YouTube Growth</option><option>Twitch Growth</option><option>Clip Editing</option><option>Social Media Growth</option><option>SEO</option><option>Other</option>
+          </select>
+          <textarea name="message" placeholder="Tell me about your project" rows="4" style="background:#0D1221;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;color:#FFFFFF;font-size:14px;font-family:inherit;resize:vertical;"></textarea>
+          <select name="budget" style="background:#0D1221;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;color:#FFFFFF;font-size:14px;font-family:inherit;">
+            <option value="">Budget Range</option>
+            <option>Under $500</option><option>$500 – $1,500</option><option>$1,500 – $5,000</option><option>$5,000+</option><option>Not sure yet</option>
+          </select>
+          <button type="submit" style="background:linear-gradient(90deg,#8B5CF6,#22D3EE);color:#070A13;font-weight:700;font-size:15px;padding:16px 24px;border-radius:12px;border:none;cursor:pointer;margin-top:4px;">SEND PROJECT REQUEST →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#05070d;border-top:1px solid rgba(255,255,255,0.08);padding:64px clamp(20px,6vw,80px) 32px;">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.08);">
+      <div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:20px;margin-bottom:8px;">JORDAN</div>
+        <div style="color:#A7B0C0;font-size:13px;margin-bottom:16px;">Creator Growth &amp; Digital Promotion</div>
+        <p style="color:#A7B0C0;font-size:13px;line-height:1.6;max-width:240px;margin:0;">Helping creators grow their channels, content and online presence.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <a href="#home" style="color:#A7B0C0;font-size:13px;">Home</a>
+        <a href="#services" style="color:#A7B0C0;font-size:13px;">Services</a>
+        <a href="#work" style="color:#A7B0C0;font-size:13px;">Case Studies</a>
+        <a href="#about" style="color:#A7B0C0;font-size:13px;">About</a>
+        <a href="#contact" style="color:#A7B0C0;font-size:13px;">Contact</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <sc-for list="{{ footerPlatforms }}" as="fp" hint-placeholder-count="5">
+          <span style="color:#A7B0C0;font-size:13px;">{{ fp }}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="max-width:1200px;margin:0 auto;padding-top:24px;color:#A7B0C0;font-size:12px;text-align:center;">© 2026 Abioye Ibrahim (Jordan). All Rights Reserved.</div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { isMobile: false, menuOpen: false };
+
+  componentDidMount() {
+    this.checkWidth = () => this.setState({ isMobile: window.innerWidth < 900 });
+    this.checkWidth();
+    window.addEventListener('resize', this.checkWidth);
+
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) {
+          en.target.style.opacity = 1;
+          en.target.style.transform = 'translateY(0)';
+          this.observer.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('#jordan-portfolio-root [data-reveal]').forEach((el) => this.observer.observe(el));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.checkWidth);
+    if (this.observer) this.observer.disconnect();
+  }
+
+  toggleMenu = () => this.setState((s) => ({ menuOpen: !s.menuOpen }));
+  closeMenu = () => this.setState({ menuOpen: false });
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const f = e.target;
+    const get = (n) => f[n] && f[n].value ? f[n].value : '—';
+    const subject = encodeURIComponent(`Project Request from ${get('name')}`);
+    const body = encodeURIComponent(
+      `Name: ${get('name')}\nEmail: ${get('email')}\nChannel: ${get('channel')}\nPlatform: ${get('platform')}\nHelp needed: ${get('help')}\nBudget: ${get('budget')}\n\nMessage:\n${get('message')}`
+    );
+    window.location.href = `mailto:hello@jordangrowth.com?subject=${subject}&body=${body}`;
+  };
+
+  renderVals() {
+    return {
+      isMobile: this.state.isMobile,
+      isNotMobile: !this.state.isMobile,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: this.toggleMenu,
+      closeMenu: this.closeMenu,
+      handleSubmit: this.handleSubmit,
+
+      platforms: ['YouTube', 'Twitch', 'Kick', 'TikTok', 'Instagram', 'X', 'Facebook'],
+
+      problemCards: [
+        { title: 'LOW DISCOVERABILITY', desc: "Your content may be good, but the right audience isn't finding it." },
+        { title: 'INCONSISTENT GROWTH', desc: "Random promotion doesn't create a reliable growth system." },
+        { title: 'MISSED CONTENT POTENTIAL', desc: 'One stream or video can become multiple opportunities across different platforms.' },
+      ],
+
+      services: [
+        { icon: '▶', title: 'TWITCH CHANNEL MARKETING', desc: 'Strategic promotion and optimization designed to improve Twitch discoverability, audience reach and overall channel presence.', tags: 'Twitch • Discovery • Audience' },
+        { icon: '▶', title: 'YOUTUBE MARKETING', desc: 'Improve your YouTube presence through channel optimization, content strategy, SEO and targeted promotion.', tags: 'YouTube • SEO • Growth' },
+        { icon: '✂', title: 'CLIPS & SHORT-FORM CONTENT', desc: 'Transform streams and long-form content into engaging clips, Shorts and social-ready content designed for wider reach.', tags: 'Clips • Shorts • Editing' },
+        { icon: '◆', title: 'SOCIAL MEDIA GROWTH', desc: 'Build a connected presence across TikTok, Instagram, X, Facebook and other platforms where your audience spends time.', tags: 'TikTok • Instagram • Social' },
+        { icon: '◎', title: 'CONTENT & SEO STRATEGY', desc: 'Optimize your content so platforms and search engines can better understand, discover and surface it to relevant audiences.', tags: 'SEO • Keywords • Strategy' },
+        { icon: '◈', title: 'CREATOR BRAND GROWTH', desc: 'Build a stronger digital presence that connects your content, platforms, audience and personal brand.', tags: 'Brand • Strategy • Community' },
+      ],
+
+      processSteps: [
+        { n: '01', title: 'DISCOVER', desc: 'Understand your channel, content, audience and goals.' },
+        { n: '02', title: 'AUDIT', desc: 'Identify weaknesses and missed opportunities.' },
+        { n: '03', title: 'STRATEGIZE', desc: 'Build a practical growth roadmap.' },
+        { n: '04', title: 'OPTIMIZE', desc: 'Improve your channel, content and discoverability.' },
+        { n: '05', title: 'PROMOTE', desc: 'Put the content in front of relevant audiences.' },
+        { n: '06', title: 'IMPROVE', desc: 'Review performance and refine the strategy.' },
+      ],
+
+      caseStudies: [
+        { title: 'Twitch Channel Marketing', tags: 'Twitch • Marketing • Growth', imageLabel: 'TWITCH CHANNEL SCREENSHOT', challenge: 'Strong stream quality but low channel discoverability.', approach: 'Rebuilt channel positioning and stream promotion strategy.', result: 'Improved discoverability and steadier viewer growth.' },
+        { title: 'YouTube Growth Campaign', tags: 'YouTube • SEO • Promotion', imageLabel: 'YOUTUBE CHANNEL SCREENSHOT', challenge: 'Videos underperforming relative to content quality.', approach: 'Applied channel and video SEO with targeted promotion.', result: 'Increased search visibility and watch time.' },
+        { title: 'Stream → Viral Clips', tags: 'Editing • Shorts • Social', imageLabel: 'CLIP EDITING SAMPLE', challenge: 'Long-form streams with untapped short-form potential.', approach: 'Systematic clipping pipeline across TikTok, Shorts and Reels.', result: 'New audience reach across short-form platforms.' },
+      ],
+
+      metrics: [
+        { label: 'PROJECTS', value: 'XX+' },
+        { label: 'PLATFORMS', value: 'X+' },
+        { label: 'CONTENT PIECES', value: 'XX+' },
+        { label: 'CREATOR PROJECTS', value: 'XX+' },
+      ],
+
+      testimonials: [
+        { quote: 'CLIENT TESTIMONIAL', name: 'Client Name', role: 'Twitch Creator' },
+        { quote: 'CLIENT TESTIMONIAL', name: 'Client Name', role: 'YouTube Creator' },
+        { quote: 'CLIENT TESTIMONIAL', name: 'Client Name', role: 'Content Creator' },
+      ],
+
+      specialties: ['CREATOR MARKETING', 'CONTENT STRATEGY', 'DIGITAL PROMOTION', 'SOCIAL MEDIA GROWTH'],
+
+      values: [
+        { title: 'STRATEGY FIRST', desc: 'Every action should have a purpose.' },
+        { title: 'CREATOR FIRST', desc: 'The strategy should fit the creator, not the other way around.' },
+        { title: 'TRANSPARENCY', desc: 'No unrealistic promises or fake results.' },
+        { title: 'LONG-TERM GROWTH', desc: 'Focus on building something sustainable.' },
+      ],
+
+      footerPlatforms: ['YouTube', 'Twitch', 'Kick', 'TikTok', 'Instagram'],
+    };
+  }
+}
+</script>
+</body>
+</html>
