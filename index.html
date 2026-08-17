@@ -136,6 +136,12 @@ select option{background:var(--surface);color:var(--text);}
 .contact-link-icon svg{width:24px;height:24px;}
 .contact-link-arrow{margin-left:auto;color:var(--muted);flex-shrink:0;}
 
+.reviews-masonry{columns:280px 3;column-gap:24px;}
+.reviews-masonry .card{break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid;margin-bottom:24px;}
+@media (max-width:640px){
+  .reviews-masonry{columns:1;}
+}
+
 .marquee-wrap{overflow:hidden;width:100%;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
 .marquee-track{display:flex;width:max-content;animation:marquee-scroll 32s linear infinite;}
 .marquee-track:hover{animation-play-state:paused;}
@@ -642,7 +648,7 @@ form textarea{resize:vertical;}
         <h2 class="dc-heading" style="font-size:clamp(32px,4.5vw,48px);margin:0 0 16px;text-wrap:balance;">WHAT CLIENTS ARE SAYING</h2>
         <p style="color:var(--muted);font-size:17px;line-height:1.6;margin:0;">Real reviews from real projects, straight from my Fiverr profile.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
+      <div class="reviews-masonry">
         <div data-reveal class="card">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:16px;">
             <div style="display:flex;align-items:center;gap:10px;">
@@ -730,7 +736,7 @@ form textarea{resize:vertical;}
         <h2 class="dc-heading" style="font-size:clamp(32px,4.5vw,48px);margin:0 0 16px;text-wrap:balance;">MORE PROOF FROM UPWORK</h2>
         <p style="color:var(--muted);font-size:17px;line-height:1.6;margin:0;">Six 5-star contracts, straight from my Upwork history.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
+      <div class="reviews-masonry">
         <div data-reveal class="card">
           <div style="font-size:12px;letter-spacing:0.03em;color:var(--accent-b);font-weight:700;margin-bottom:14px;">YouTube Marketing for Monetization</div>
           <div style="color:var(--accent-b);font-size:14px;letter-spacing:0.04em;margin-bottom:14px;">&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color:var(--muted);font-weight:400;">5.0</span> <span style="color:var(--line-strong);">|</span> <span style="color:var(--muted);font-size:12px;">Apr 9 &ndash; Apr 14, 2026</span></div>
