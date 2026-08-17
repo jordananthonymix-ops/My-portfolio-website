@@ -166,20 +166,24 @@ select option{background:var(--surface);color:var(--text);}
 .marquee-item{font-family:'Space Grotesk',ui-sans-serif,system-ui,sans-serif;font-weight:900;font-size:clamp(22px,4vw,38px);white-space:nowrap;padding:0 22px;background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent;}
 .marquee-dot{font-weight:400;color:var(--muted);font-size:clamp(18px,3vw,28px);}
 
-.video-marquee-wrap{overflow:hidden;width:100%;-webkit-mask:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);}
-.video-marquee-track{display:flex;gap:20px;width:max-content;animation:video-marquee-scroll 40s linear infinite;}
-.video-marquee-track:hover{animation-play-state:paused;}
-@keyframes video-marquee-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.video-marquee-group{display:flex;gap:20px;flex-shrink:0;}
-.video-card{position:relative;width:220px;height:132px;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,rgba(45,232,176,0.14),rgba(255,129,76,0.10));border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;flex-shrink:0;transition:transform .3s ease,border-color .3s ease;}
-.video-card:hover{transform:translateY(-4px);border-color:var(--line-strong);}
-.video-card-play{width:42px;height:42px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;color:#0B0E1A;box-shadow:0 6px 18px rgba(0,0,0,0.28);flex-shrink:0;}
-.video-card-play svg{width:16px;height:16px;}
-.video-card-label{font-size:12px;font-weight:700;letter-spacing:0.05em;color:var(--text);}
-.video-card-sub{font-size:10px;color:var(--muted);letter-spacing:0.04em;}
+.clip-carousel{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x proximity;padding:6px 4px 18px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--line-strong) transparent;}
+.clip-carousel::-webkit-scrollbar{height:6px;}
+.clip-carousel::-webkit-scrollbar-track{background:transparent;}
+.clip-carousel::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:10px;}
+.clip-card{flex:0 0 auto;width:200px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:12px;}
+.clip-frame{position:relative;width:100%;aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:var(--surface-2);border:1px solid var(--line);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
+.clip-card:hover .clip-frame{transform:scale(1.035);box-shadow:0 14px 34px rgba(0,0,0,0.35);border-color:var(--accent-b);}
+.clip-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.clip-open-link{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;background:rgba(11,14,26,0.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;color:#fff;opacity:0;transition:opacity .25s ease;z-index:2;}
+.clip-card:hover .clip-open-link{opacity:1;}
+.clip-open-link svg{width:14px;height:14px;}
+.clip-label{font-size:13px;font-weight:700;letter-spacing:0.03em;color:var(--text);text-align:center;}
+@media (max-width:700px){
+  .clip-card{width:168px;}
+}
 
 @media (prefers-reduced-motion: reduce){
-  .marquee-track,.video-marquee-track{animation:none;}
+  .marquee-track{animation:none;}
 }
 
 .wheel-stage{position:relative;perspective:1900px;perspective-origin:50% 40%;width:100%;min-height:400px;display:flex;align-items:center;justify-content:center;padding:20px 0;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;}
@@ -788,15 +792,83 @@ form textarea{resize:vertical;}
   </section>
 
   <!-- VIDEO PORTFOLIO -->
-  <section style="background:var(--bg);padding:clamp(64px,9vw,120px) clamp(20px,6vw,80px) clamp(48px,7vw,88px);overflow:hidden;">
+  <section style="background:var(--bg);padding:clamp(64px,9vw,120px) clamp(20px,6vw,80px) clamp(48px,7vw,88px);">
     <div class="container" style="text-align:center;">
       <h2 data-reveal class="dc-heading" style="font-size:clamp(32px,4.5vw,48px);margin:0 0 16px;text-wrap:balance;">RAW EDITS</h2>
-      <p data-reveal style="color:var(--muted);font-size:16px;max-width:540px;margin:0 auto 48px;">A scroll through recent clip edits and highlight cuts. Hover to pause, click a card to watch on Google Drive.</p>
+      <p data-reveal style="color:var(--muted);font-size:16px;max-width:540px;margin:0 auto 40px;">A closer look at recent clip edits. Scroll to browse, or open the icon on any clip to view it on Google Drive.</p>
     </div>
-    <div class="video-marquee-wrap">
-      <div class="video-marquee-track">
-        <div class="video-marquee-group"><a href="https://drive.google.com/file/d/1YT11w-r2zvaVQLqOBvYZGH_H5fUCZfPu/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 01</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/1SA2yrzonatUT2B8vBSfMtou7CB3u2vC7/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 02</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/1aaw3LM6ezz_lkzI6lrdO7cqFaCKbyU9s/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 03</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/1TO1Ss8Dle1XK3ElSomszBddmpVW3U_mr/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 10</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/12k9CL8E6po9t25qPNtpTqRuqkVbWfbm6/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 04</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/1lAeOSnCGbo8Wb1YD5prmTIqPdCTvK1nq/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 05</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/1PZxrFyVbqaSQb1xa7obI4FOkQh679KRB/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 06</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/1RSlkx-DpVx5cqNVH-yIRo_nngkmh-aY2/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 07</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/11IJA2jvg5b5cqVfRN_Ue292CIJbC7Gyd/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 08</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/1PBYHBM-PU4UAfH7O50OevRGLR9v_Bdky/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 09</div><div class="video-card-sub">Watch on Google Drive</div></a></div>
-        <div class="video-marquee-group"><a href="https://drive.google.com/file/d/1YT11w-r2zvaVQLqOBvYZGH_H5fUCZfPu/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 01</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/1SA2yrzonatUT2B8vBSfMtou7CB3u2vC7/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 02</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/1aaw3LM6ezz_lkzI6lrdO7cqFaCKbyU9s/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 03</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/1TO1Ss8Dle1XK3ElSomszBddmpVW3U_mr/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 10</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/12k9CL8E6po9t25qPNtpTqRuqkVbWfbm6/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 04</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/1lAeOSnCGbo8Wb1YD5prmTIqPdCTvK1nq/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 05</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/1PZxrFyVbqaSQb1xa7obI4FOkQh679KRB/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 06</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/1RSlkx-DpVx5cqNVH-yIRo_nngkmh-aY2/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 07</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/11IJA2jvg5b5cqVfRN_Ue292CIJbC7Gyd/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 08</div><div class="video-card-sub">Watch on Google Drive</div></a><a href="https://drive.google.com/file/d/1PBYHBM-PU4UAfH7O50OevRGLR9v_Bdky/view?usp=sharing" target="_blank" rel="noopener" class="video-card"><div class="video-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="video-card-label">CLIP 09</div><div class="video-card-sub">Watch on Google Drive</div></a></div>
+    <div class="container-wide">
+      <div class="clip-carousel">
+        <div class="clip-card">
+          <div class="clip-frame">
+            <iframe src="https://drive.google.com/file/d/1YT11w-r2zvaVQLqOBvYZGH_H5fUCZfPu/preview" loading="lazy" allow="autoplay" title="CLIP 01"></iframe>
+            <a class="clip-open-link" href="https://drive.google.com/file/d/1YT11w-r2zvaVQLqOBvYZGH_H5fUCZfPu/view?usp=sharing" target="_blank" rel="noopener" aria-label="Open CLIP 01 in Google Drive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+          <div class="clip-label">CLIP 01</div>
+        </div>
+        <div class="clip-card">
+          <div class="clip-frame">
+            <iframe src="https://drive.google.com/file/d/1SA2yrzonatUT2B8vBSfMtou7CB3u2vC7/preview" loading="lazy" allow="autoplay" title="CLIP 02"></iframe>
+            <a class="clip-open-link" href="https://drive.google.com/file/d/1SA2yrzonatUT2B8vBSfMtou7CB3u2vC7/view?usp=sharing" target="_blank" rel="noopener" aria-label="Open CLIP 02 in Google Drive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+          <div class="clip-label">CLIP 02</div>
+        </div>
+        <div class="clip-card">
+          <div class="clip-frame">
+            <iframe src="https://drive.google.com/file/d/1aaw3LM6ezz_lkzI6lrdO7cqFaCKbyU9s/preview" loading="lazy" allow="autoplay" title="CLIP 03"></iframe>
+            <a class="clip-open-link" href="https://drive.google.com/file/d/1aaw3LM6ezz_lkzI6lrdO7cqFaCKbyU9s/view?usp=sharing" target="_blank" rel="noopener" aria-label="Open CLIP 03 in Google Drive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+          <div class="clip-label">CLIP 03</div>
+        </div>
+        <div class="clip-card">
+          <div class="clip-frame">
+            <iframe src="https://drive.google.com/file/d/1TO1Ss8Dle1XK3ElSomszBddmpVW3U_mr/preview" loading="lazy" allow="autoplay" title="CLIP 04"></iframe>
+            <a class="clip-open-link" href="https://drive.google.com/file/d/1TO1Ss8Dle1XK3ElSomszBddmpVW3U_mr/view?usp=sharing" target="_blank" rel="noopener" aria-label="Open CLIP 04 in Google Drive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+          <div class="clip-label">CLIP 04</div>
+        </div>
+        <div class="clip-card">
+          <div class="clip-frame">
+            <iframe src="https://drive.google.com/file/d/12k9CL8E6po9t25qPNtpTqRuqkVbWfbm6/preview" loading="lazy" allow="autoplay" title="CLIP 05"></iframe>
+            <a class="clip-open-link" href="https://drive.google.com/file/d/12k9CL8E6po9t25qPNtpTqRuqkVbWfbm6/view?usp=sharing" target="_blank" rel="noopener" aria-label="Open CLIP 05 in Google Drive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+          <div class="clip-label">CLIP 05</div>
+        </div>
+        <div class="clip-card">
+          <div class="clip-frame">
+            <iframe src="https://drive.google.com/file/d/1lAeOSnCGbo8Wb1YD5prmTIqPdCTvK1nq/preview" loading="lazy" allow="autoplay" title="CLIP 06"></iframe>
+            <a class="clip-open-link" href="https://drive.google.com/file/d/1lAeOSnCGbo8Wb1YD5prmTIqPdCTvK1nq/view?usp=sharing" target="_blank" rel="noopener" aria-label="Open CLIP 06 in Google Drive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+          <div class="clip-label">CLIP 06</div>
+        </div>
+        <div class="clip-card">
+          <div class="clip-frame">
+            <iframe src="https://drive.google.com/file/d/1PZxrFyVbqaSQb1xa7obI4FOkQh679KRB/preview" loading="lazy" allow="autoplay" title="CLIP 07"></iframe>
+            <a class="clip-open-link" href="https://drive.google.com/file/d/1PZxrFyVbqaSQb1xa7obI4FOkQh679KRB/view?usp=sharing" target="_blank" rel="noopener" aria-label="Open CLIP 07 in Google Drive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+          <div class="clip-label">CLIP 07</div>
+        </div>
+        <div class="clip-card">
+          <div class="clip-frame">
+            <iframe src="https://drive.google.com/file/d/1RSlkx-DpVx5cqNVH-yIRo_nngkmh-aY2/preview" loading="lazy" allow="autoplay" title="CLIP 08"></iframe>
+            <a class="clip-open-link" href="https://drive.google.com/file/d/1RSlkx-DpVx5cqNVH-yIRo_nngkmh-aY2/view?usp=sharing" target="_blank" rel="noopener" aria-label="Open CLIP 08 in Google Drive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+          <div class="clip-label">CLIP 08</div>
+        </div>
+        <div class="clip-card">
+          <div class="clip-frame">
+            <iframe src="https://drive.google.com/file/d/11IJA2jvg5b5cqVfRN_Ue292CIJbC7Gyd/preview" loading="lazy" allow="autoplay" title="CLIP 09"></iframe>
+            <a class="clip-open-link" href="https://drive.google.com/file/d/11IJA2jvg5b5cqVfRN_Ue292CIJbC7Gyd/view?usp=sharing" target="_blank" rel="noopener" aria-label="Open CLIP 09 in Google Drive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+          <div class="clip-label">CLIP 09</div>
+        </div>
+        <div class="clip-card">
+          <div class="clip-frame">
+            <iframe src="https://drive.google.com/file/d/1PBYHBM-PU4UAfH7O50OevRGLR9v_Bdky/preview" loading="lazy" allow="autoplay" title="CLIP 10"></iframe>
+            <a class="clip-open-link" href="https://drive.google.com/file/d/1PBYHBM-PU4UAfH7O50OevRGLR9v_Bdky/view?usp=sharing" target="_blank" rel="noopener" aria-label="Open CLIP 10 in Google Drive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          </div>
+          <div class="clip-label">CLIP 10</div>
+        </div>
       </div>
     </div>
   </section>
