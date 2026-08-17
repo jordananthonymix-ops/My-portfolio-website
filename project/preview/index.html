@@ -142,6 +142,22 @@ select option{background:var(--surface);color:var(--text);}
   .reviews-masonry{columns:1;}
 }
 
+.review-glow-grid .card{position:relative;transition:transform .3s ease;}
+.review-glow-grid .card:hover{transform:translateY(-5px);}
+@keyframes review-glow-pulse{
+  0%,100%{box-shadow:0 0 0 1px var(--line),0 0 0 rgba(45,232,176,0);}
+  50%{box-shadow:0 0 0 1px var(--line),0 0 26px rgba(45,232,176,0.28),0 0 10px rgba(255,129,76,0.18);}
+}
+.review-glow-grid .card{animation:review-glow-pulse 4.5s ease-in-out infinite;}
+.review-glow-grid .card:nth-child(2){animation-delay:0.6s;}
+.review-glow-grid .card:nth-child(3){animation-delay:1.2s;}
+.review-glow-grid .card:nth-child(4){animation-delay:1.8s;}
+.review-glow-grid .card:nth-child(5){animation-delay:2.4s;}
+.review-glow-grid .card:nth-child(6){animation-delay:3.0s;}
+@media (prefers-reduced-motion: reduce){
+  .review-glow-grid .card{animation:none;}
+}
+
 .marquee-wrap{overflow:hidden;width:100%;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
 .marquee-track{display:flex;width:max-content;animation:marquee-scroll 32s linear infinite;}
 .marquee-track:hover{animation-play-state:paused;}
@@ -648,7 +664,7 @@ form textarea{resize:vertical;}
         <h2 class="dc-heading" style="font-size:clamp(32px,4.5vw,48px);margin:0 0 16px;text-wrap:balance;">WHAT CLIENTS ARE SAYING</h2>
         <p style="color:var(--muted);font-size:17px;line-height:1.6;margin:0;">Real reviews from real projects, straight from my Fiverr profile.</p>
       </div>
-      <div class="reviews-masonry">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;" class="review-glow-grid">
         <div data-reveal class="card">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:16px;">
             <div style="display:flex;align-items:center;gap:10px;">
@@ -736,7 +752,7 @@ form textarea{resize:vertical;}
         <h2 class="dc-heading" style="font-size:clamp(32px,4.5vw,48px);margin:0 0 16px;text-wrap:balance;">MORE PROOF FROM UPWORK</h2>
         <p style="color:var(--muted);font-size:17px;line-height:1.6;margin:0;">Six 5-star contracts, straight from my Upwork history.</p>
       </div>
-      <div class="reviews-masonry">
+      <div class="reviews-masonry review-glow-grid">
         <div data-reveal class="card">
           <div style="font-size:12px;letter-spacing:0.03em;color:var(--accent-b);font-weight:700;margin-bottom:14px;">YouTube Marketing for Monetization</div>
           <div style="color:var(--accent-b);font-size:14px;letter-spacing:0.04em;margin-bottom:14px;">&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color:var(--muted);font-weight:400;">5.0</span> <span style="color:var(--line-strong);">|</span> <span style="color:var(--muted);font-size:12px;">Apr 9 &ndash; Apr 14, 2026</span></div>
